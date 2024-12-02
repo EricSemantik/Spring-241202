@@ -15,10 +15,14 @@ public class PrincipalJava {
 		// Exercice 1 :
 		Guitariste guitariste = new Guitariste();	
 		guitariste.setInstrument(guitare);
-		guitariste.setMorceau("We are a champions");
+		guitariste.setMorceau("We are a champion");
+		
+		guitariste.jouer();
 		
 		// Exercice 2 :
-//		Guitariste myMusicien = new Guitariste(guitare, "We are a champions");
+		Guitariste myMusicien = new Guitariste(guitare, "We are a champions");
+		
+		guitariste.jouer();
 		
 		// Exercice 3 :
 //		Piano piano = new Piano();
