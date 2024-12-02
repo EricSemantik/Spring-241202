@@ -16,12 +16,10 @@ public class PrincipalSpringJava {
 		
 		guitariste.jouer();
 		
-		IMusicien pianiste = context.getBean(Pianiste.class);
+		IMusicien pianiste = context.getBean("pianiste", IMusicien.class);
+		
 		
 		pianiste.jouer();
-		
-		
-		context.getBean("piano", IInstrument.class);
 		
 		context.close();		
 	}

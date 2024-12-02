@@ -31,6 +31,7 @@ public class Pianiste implements IMusicien {
 	@Override
 	public void jouer() {
 		System.out.println("Le pianiste joue : " + this.morceau + "(" + this.instrument.son() + ")");
+//		throw new RuntimeException("Fausse note");
 	}
 
 	public IInstrument getInstrument() {

@@ -3,11 +3,13 @@ package spring.formation.config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
-@ComponentScan("spring.formation.orchestre")
+@ComponentScan("spring.formation")
 @PropertySource("classpath:musique.properties")
+@EnableAspectJAutoProxy
 public class ApplicationConfig {
 	
 	@Value("${musique.instrument.pianiste.morceau}")
