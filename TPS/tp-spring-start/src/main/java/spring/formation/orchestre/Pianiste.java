@@ -2,7 +2,7 @@ package spring.formation.orchestre;
 
 public class Pianiste implements IMusicien {
 
-	private IInstrument instrument = new Piano();
+	private IInstrument instrument;
 	private String morceau;
 
 	public Pianiste() {
