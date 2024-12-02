@@ -1,11 +1,17 @@
 package spring.formation.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @ComponentScan("spring.formation.orchestre")
+@PropertySource("classpath:musique.properties")
 public class ApplicationConfig {
+	
+	@Value("${musique.instrument.pianiste.morceau}")
+	private String pianisteMorceau;
 
 //	@Bean
 //	public IInstrument guitare() {
@@ -36,7 +42,9 @@ public class ApplicationConfig {
 //	public IMusicien pianiste(Synthe synthe) {
 //		Pianiste pianiste = new Pianiste();
 //		pianiste.setInstrument(synthe);
-//		pianiste.setMorceau("5ème Symphonie");
+//		pianiste.setMorceau(this.pianisteMorceau);
+//	
+//		pianiste.apresCreationBean();
 //		
 //		return pianiste;
 //	}

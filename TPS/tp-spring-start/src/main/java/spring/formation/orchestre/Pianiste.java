@@ -1,5 +1,7 @@
 package spring.formation.orchestre;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -38,6 +40,7 @@ public class Pianiste implements IMusicien {
 	@Autowired
 	@Qualifier("piano")
 	public void setInstrument(IInstrument instrument) {
+		System.out.println("setInstrument");
 		this.instrument = instrument;
 	}
 
@@ -45,9 +48,14 @@ public class Pianiste implements IMusicien {
 		return morceau;
 	}
 
-	@Value("5ème Symphonie")
+	@Value("${musique.instrument.pianiste.morceau}")
 	public void setMorceau(String morceau) {
 		this.morceau = morceau;
+	}
+	
+	@PostConstruct
+	public void apresCreationBean() {
+		System.out.println("Et voilà après l'injection de l'instrument");
 	}
 
 }

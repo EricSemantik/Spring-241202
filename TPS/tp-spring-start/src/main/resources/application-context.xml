@@ -11,6 +11,8 @@
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<context:component-scan base-package="spring.formation.orchestre"/>
+	
+	<context:property-placeholder location="classpath:musique.properties"/>
 
 	<bean id="guitare" class="spring.formation.orchestre.Guitare" />
 
@@ -23,9 +25,9 @@
 
 	</bean>
 
-	<bean id="pianiste" class="spring.formation.orchestre.Pianiste">
-		<property name="instrument" ref="synthe" />
-		<property name="morceau" value="5ème Symphonie" />
+	<bean id="pianiste" class="spring.formation.orchestre.Pianiste" init-method="apresCreationBean">
+		<property name="instrument" ref="piano" />
+		<property name="morceau" value="${musique.instrument.pianiste.morceau}" />
 	</bean>
 
 	<bean id="piano" class="spring.formation.orchestre.Piano" />

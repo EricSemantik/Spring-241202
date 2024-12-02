@@ -3,6 +3,7 @@ package spring.formation;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import spring.formation.config.ApplicationConfig;
+import spring.formation.orchestre.IInstrument;
 import spring.formation.orchestre.IMusicien;
 import spring.formation.orchestre.Pianiste;
 
@@ -18,6 +19,9 @@ public class PrincipalSpringJava {
 		IMusicien pianiste = context.getBean(Pianiste.class);
 		
 		pianiste.jouer();
+		
+		
+		context.getBean("piano", IInstrument.class);
 		
 		context.close();		
 	}
