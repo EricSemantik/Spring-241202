@@ -61,18 +61,18 @@ public class UtilisateurRepositoryJpa implements IUtilisateurRepository {
 		return rows > 0;
 	}
 
-	@Override
-	public Optional<Utilisateur> findByIdentifiant(String identifiant) {
-		TypedQuery<Utilisateur> query = em.createQuery("select u from Utilisateur u where u.identifiant = ?1",
-				Utilisateur.class);
-		query.setParameter(1, identifiant);
-
-		Utilisateur obj = query.getSingleResult();
-
-		if (obj != null)
-			return Optional.of(obj);
-
-		return Optional.empty();
-	}
+//	@Override
+//	public Optional<Utilisateur> findByIdentifiant(String identifiant) {
+//		TypedQuery<Utilisateur> query = em.createQuery("select u from Utilisateur u where u.identifiant = ?1",
+//				Utilisateur.class);
+//		query.setParameter(1, identifiant);
+//
+//		Utilisateur obj = query.getSingleResult();
+//
+//		if (obj != null)
+//			return Optional.of(obj);
+//
+//		return Optional.empty();
+//	}
 
 }

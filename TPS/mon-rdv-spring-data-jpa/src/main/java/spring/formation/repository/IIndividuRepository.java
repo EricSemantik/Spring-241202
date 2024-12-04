@@ -9,13 +9,13 @@ import spring.formation.model.Praticien;
 import spring.formation.model.Secretaire;
 
 public interface IIndividuRepository extends IRepository<Individu, Long>{
-	List<Patient> findAllPatient();
-	
-	List<Praticien> findAllPraticien();
-	
-	List<Secretaire> findAllSecretaire();
-	
-	Optional<Individu> findByIdentifiant(String identifiant);
-	
-	List<Praticien> findAllPraticienBySpecialite(String nom);
+//	List<Patient> findAllPatient();
+//	
+//	List<Praticien> findAllPraticien();
+//	
+//	List<Secretaire> findAllSecretaire();
+//	
+//	Optional<Individu> findByIdentifiant(String identifiant);
+//	
+//	List<Praticien> findAllPraticienBySpecialite(String nom);
 }

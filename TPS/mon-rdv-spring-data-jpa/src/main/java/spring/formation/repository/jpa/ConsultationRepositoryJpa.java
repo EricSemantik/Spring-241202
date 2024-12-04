@@ -54,32 +54,32 @@ public class ConsultationRepositoryJpa implements IConsultationRepository {
 		return rows > 0;
 	}
 
-	@Override
-	public List<Consultation> findAllByPraticien(Long idPraticien) {
-		TypedQuery<Consultation> query = em.createQuery("select c from Consultation c where c.praticien.id = ?1",
-				Consultation.class);
-		query.setParameter(1, idPraticien);
-
-		return query.getResultList();
-	}
-
-	@Override
-	public List<Consultation> findAllByPatient(Long idPatient) {
-		TypedQuery<Consultation> query = em.createQuery(
-				"select c from Consultation c join c.patient p where p.id = :idPatient", Consultation.class);
-		query.setParameter("idPatient", idPatient);
-
-		return query.getResultList();
-
-	}
-
-	@Override
-	public List<Consultation> findParStatut(Statut statut) {
-		TypedQuery<Consultation> query = em.createQuery(
-				"select c from Consultation c where c.statut = :stat", Consultation.class);
-		query.setParameter("stat", statut);
-
-		return query.getResultList();
-	}
+//	@Override
+//	public List<Consultation> findAllByPraticien(Long idPraticien) {
+//		TypedQuery<Consultation> query = em.createQuery("select c from Consultation c where c.praticien.id = ?1",
+//				Consultation.class);
+//		query.setParameter(1, idPraticien);
+//
+//		return query.getResultList();
+//	}
+//
+//	@Override
+//	public List<Consultation> findAllByPatient(Long idPatient) {
+//		TypedQuery<Consultation> query = em.createQuery(
+//				"select c from Consultation c join c.patient p where p.id = :idPatient", Consultation.class);
+//		query.setParameter("idPatient", idPatient);
+//
+//		return query.getResultList();
+//
+//	}
+//
+//	@Override
+//	public List<Consultation> findParStatut(Statut statut) {
+//		TypedQuery<Consultation> query = em.createQuery(
+//				"select c from Consultation c where c.statut = :stat", Consultation.class);
+//		query.setParameter("stat", statut);
+//
+//		return query.getResultList();
+//	}
 
 }

@@ -98,62 +98,62 @@ public class PraticienTest {
 		}
 	}
 
-	@Test
-	public void testFindAllPraticienBySpecialite() {
-//		IIndividuRepository individuRepository = context.getBean(IIndividuRepository.class);
-//		ISpecialiteRepository specialiteRepository = context.getBean(ISpecialiteRepository.class);
-
-		int startSize = individuRepository.findAllPraticienBySpecialite("Généraliste").size();
-
-		// ARRANGE
-		Specialite specialite01 = new Specialite("Généraliste", "Médecine Générale");
-		specialite01 = specialiteRepository.save(specialite01);
-
-		Specialite specialite02 = new Specialite("ORL", "Oto-rhino-laryngologiste");
-		specialite02 = specialiteRepository.save(specialite02);
-
-		Specialite specialite03 = new Specialite("Sport", "Médecine du sport");
-		specialite03 = specialiteRepository.save(specialite03);
-
-		Praticien praticien01 = new Praticien(Civilite.DR, "MAKI", "Raymond", "raymond@gmail.com", "0606066666",
-				Convention.SECTEUR_2, true, false, true, true);
-		praticien01.getSpecialites().add(specialite01);
-		praticien01.getSpecialites().add(specialite03);
-
-		praticien01 = (Praticien) individuRepository.save(praticien01);
-
-		Praticien praticien02 = new Praticien(Civilite.DRE, "BACHELIER", "dominique", "dominique@gmail.com",
-				"0606066666", Convention.SECTEUR_3, true, true, true, false);
-		praticien02.setAdresse(new Adresse("8 avenue Foucault", "", "69000", "Lyon"));
-		praticien02.getSpecialites().add(specialite01);
-		praticien02.getSpecialites().add(specialite02);
-
-		praticien02 = (Praticien) individuRepository.save(praticien02);
-		// ACT
-		int endSize = individuRepository.findAllPraticienBySpecialite("Généraliste").size();
-
-		// ASSERT
-		Assert.assertEquals(2, endSize - startSize);
-	}
-
-	@Test
-	public void testFindByIdentifiant() {
-//		IIndividuRepository individuRepository = context.getBean(IIndividuRepository.class);
-//		IUtilisateurRepository utilisateurRepository = context.getBean(IUtilisateurRepository.class);
-
-		// ARRANGE
-		Utilisateur utiSecretaire01 = new Utilisateur("secretaire01", "123456", true, Role.SECRETAIRE);
-		utiSecretaire01 = utilisateurRepository.save(utiSecretaire01);
-
-		Secretaire secretaire01 = new Secretaire(Civilite.M, "AMCRO", "Gilles", "gilles@gmail.com", "0606066666");
-		secretaire01.setUtilisateur(utiSecretaire01);
-
-		secretaire01 = (Secretaire) individuRepository.save(secretaire01);
-		// ACT
-		Optional<Individu> optIndividu = individuRepository.findByIdentifiant("secretaire01");
-
-		// ASSERT
-		assertTrue(optIndividu.isPresent());
-	}
+//	@Test
+//	public void testFindAllPraticienBySpecialite() {
+////		IIndividuRepository individuRepository = context.getBean(IIndividuRepository.class);
+////		ISpecialiteRepository specialiteRepository = context.getBean(ISpecialiteRepository.class);
+//
+//		int startSize = individuRepository.findAllPraticienBySpecialite("Généraliste").size();
+//
+//		// ARRANGE
+//		Specialite specialite01 = new Specialite("Généraliste", "Médecine Générale");
+//		specialite01 = specialiteRepository.save(specialite01);
+//
+//		Specialite specialite02 = new Specialite("ORL", "Oto-rhino-laryngologiste");
+//		specialite02 = specialiteRepository.save(specialite02);
+//
+//		Specialite specialite03 = new Specialite("Sport", "Médecine du sport");
+//		specialite03 = specialiteRepository.save(specialite03);
+//
+//		Praticien praticien01 = new Praticien(Civilite.DR, "MAKI", "Raymond", "raymond@gmail.com", "0606066666",
+//				Convention.SECTEUR_2, true, false, true, true);
+//		praticien01.getSpecialites().add(specialite01);
+//		praticien01.getSpecialites().add(specialite03);
+//
+//		praticien01 = (Praticien) individuRepository.save(praticien01);
+//
+//		Praticien praticien02 = new Praticien(Civilite.DRE, "BACHELIER", "dominique", "dominique@gmail.com",
+//				"0606066666", Convention.SECTEUR_3, true, true, true, false);
+//		praticien02.setAdresse(new Adresse("8 avenue Foucault", "", "69000", "Lyon"));
+//		praticien02.getSpecialites().add(specialite01);
+//		praticien02.getSpecialites().add(specialite02);
+//
+//		praticien02 = (Praticien) individuRepository.save(praticien02);
+//		// ACT
+//		int endSize = individuRepository.findAllPraticienBySpecialite("Généraliste").size();
+//
+//		// ASSERT
+//		Assert.assertEquals(2, endSize - startSize);
+//	}
+//
+//	@Test
+//	public void testFindByIdentifiant() {
+////		IIndividuRepository individuRepository = context.getBean(IIndividuRepository.class);
+////		IUtilisateurRepository utilisateurRepository = context.getBean(IUtilisateurRepository.class);
+//
+//		// ARRANGE
+//		Utilisateur utiSecretaire01 = new Utilisateur("secretaire01", "123456", true, Role.SECRETAIRE);
+//		utiSecretaire01 = utilisateurRepository.save(utiSecretaire01);
+//
+//		Secretaire secretaire01 = new Secretaire(Civilite.M, "AMCRO", "Gilles", "gilles@gmail.com", "0606066666");
+//		secretaire01.setUtilisateur(utiSecretaire01);
+//
+//		secretaire01 = (Secretaire) individuRepository.save(secretaire01);
+//		// ACT
+//		Optional<Individu> optIndividu = individuRepository.findByIdentifiant("secretaire01");
+//
+//		// ASSERT
+//		assertTrue(optIndividu.isPresent());
+//	}
 
 }

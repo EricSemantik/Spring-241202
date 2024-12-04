@@ -192,28 +192,28 @@ public class MonRdvApplicationTest {
 
 		consultation02 = consultationRepository.save(consultation02);
 
-		List<Consultation> consultationsPraticien = consultationRepository.findAllByPraticien(praticien01.getId());
-
-		System.out.println("consultationsPraticien=" + consultationsPraticien.size());
-
-		List<Consultation> consultationsPatient = consultationRepository.findAllByPatient(patient01.getId());
-
-		System.out.println("consultationsPatient=" + consultationsPatient.size());
-
-		List<Patient> patients = individuRepository.findAllPatient();
-
-		System.out.println("patients=" + patients.size());
-
-		Optional<Individu> optIndividu = individuRepository.findByIdentifiant("secretaire01");
-
-		System.out.println("optIndividu=" + optIndividu.isPresent());
-
-		List<Praticien> praticiens = individuRepository.findAllPraticienBySpecialite("ORL");
-
-		System.out.println("praticiens=" + praticiens.size());
-
-		Optional<Utilisateur> optUtilisateur = utilisateurRepository.findByIdentifiant("patient01");
-
-		System.out.println("optUtilisateur=" + optUtilisateur.isPresent());
+//		List<Consultation> consultationsPraticien = consultationRepository.findAllByPraticien(praticien01.getId());
+//
+//		System.out.println("consultationsPraticien=" + consultationsPraticien.size());
+//
+//		List<Consultation> consultationsPatient = consultationRepository.findAllByPatient(patient01.getId());
+//
+//		System.out.println("consultationsPatient=" + consultationsPatient.size());
+//
+//		List<Patient> patients = individuRepository.findAllPatient();
+//
+//		System.out.println("patients=" + patients.size());
+//
+//		Optional<Individu> optIndividu = individuRepository.findByIdentifiant("secretaire01");
+//
+//		System.out.println("optIndividu=" + optIndividu.isPresent());
+//
+//		List<Praticien> praticiens = individuRepository.findAllPraticienBySpecialite("ORL");
+//
+//		System.out.println("praticiens=" + praticiens.size());
+//
+//		Optional<Utilisateur> optUtilisateur = utilisateurRepository.findByIdentifiant("patient01");
+//
+//		System.out.println("optUtilisateur=" + optUtilisateur.isPresent());
 	}
 }

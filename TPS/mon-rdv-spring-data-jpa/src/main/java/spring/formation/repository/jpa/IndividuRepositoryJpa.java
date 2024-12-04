@@ -57,48 +57,48 @@ public class IndividuRepositoryJpa implements IIndividuRepository {
 		return rows > 0;
 	}
 
-	@Override
-	public List<Patient> findAllPatient() {
-		TypedQuery<Patient> query = em.createQuery("select p from Patient p", Patient.class);
-
-		return query.getResultList();
-	}
-
-	@Override
-	public List<Praticien> findAllPraticien() {
-		TypedQuery<Praticien> query = em.createQuery("select p from Praticien p", Praticien.class);
-
-		return query.getResultList();
-	}
-
-	@Override
-	public List<Secretaire> findAllSecretaire() {
-		TypedQuery<Secretaire> query = em.createQuery("select sec from Secretaire sec", Secretaire.class);
-
-		return query.getResultList();
-	}
-
-	@Override
-	public Optional<Individu> findByIdentifiant(String identifiant) {
-		TypedQuery<Individu> query = em.createQuery("select i from Individu i where i.utilisateur.identifiant = ?1",
-				Individu.class);
-		query.setParameter(1, identifiant);
-
-		Individu obj = query.getSingleResult();
-
-		if (obj != null)
-			return Optional.of(obj);
-
-		return Optional.empty();
-	}
-
-	@Override
-	public List<Praticien> findAllPraticienBySpecialite(String nom) {
-		TypedQuery<Praticien> query = em.createQuery("select p from Praticien p join p.specialites s where s.nom = ?1",
-				Praticien.class);
-		query.setParameter(1, nom);
-
-		return query.getResultList();
-	}
+//	@Override
+//	public List<Patient> findAllPatient() {
+//		TypedQuery<Patient> query = em.createQuery("select p from Patient p", Patient.class);
+//
+//		return query.getResultList();
+//	}
+//
+//	@Override
+//	public List<Praticien> findAllPraticien() {
+//		TypedQuery<Praticien> query = em.createQuery("select p from Praticien p", Praticien.class);
+//
+//		return query.getResultList();
+//	}
+//
+//	@Override
+//	public List<Secretaire> findAllSecretaire() {
+//		TypedQuery<Secretaire> query = em.createQuery("select sec from Secretaire sec", Secretaire.class);
+//
+//		return query.getResultList();
+//	}
+//
+//	@Override
+//	public Optional<Individu> findByIdentifiant(String identifiant) {
+//		TypedQuery<Individu> query = em.createQuery("select i from Individu i where i.utilisateur.identifiant = ?1",
+//				Individu.class);
+//		query.setParameter(1, identifiant);
+//
+//		Individu obj = query.getSingleResult();
+//
+//		if (obj != null)
+//			return Optional.of(obj);
+//
+//		return Optional.empty();
+//	}
+//
+//	@Override
+//	public List<Praticien> findAllPraticienBySpecialite(String nom) {
+//		TypedQuery<Praticien> query = em.createQuery("select p from Praticien p join p.specialites s where s.nom = ?1",
+//				Praticien.class);
+//		query.setParameter(1, nom);
+//
+//		return query.getResultList();
+//	}
 
 }
