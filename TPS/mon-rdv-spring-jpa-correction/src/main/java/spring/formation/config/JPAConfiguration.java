@@ -21,6 +21,7 @@ import jakarta.persistence.EntityManagerFactory;
 @ComponentScan("spring.formation.repository.jpa")
 @EnableTransactionManagement
 public class JPAConfiguration {
+
 	@Bean
 	public DataSource dataSource() {
 		BasicDataSource dataSource = new BasicDataSource();

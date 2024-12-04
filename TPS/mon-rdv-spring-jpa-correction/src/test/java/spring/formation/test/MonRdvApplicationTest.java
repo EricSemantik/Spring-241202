@@ -6,6 +6,8 @@ import java.time.Month;
 import java.util.List;
 import java.util.Optional;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -32,11 +34,21 @@ import spring.formation.repository.ISpecialiteRepository;
 import spring.formation.repository.IUtilisateurRepository;
 
 public class MonRdvApplicationTest {
+	
+	private AnnotationConfigApplicationContext context = null;
+	
+	@Before
+	public void avantChaqueTest() {
+		context = new AnnotationConfigApplicationContext(JPAConfiguration.class);
+	}
+	
+	@After
+	public void apresChaqueTest() {
+		context.close();
+	}
 
 	@Test
 	public void populate() {
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(JPAConfiguration.class);
-
 		IConsultationRepository consultationRepository = context.getBean(IConsultationRepository.class);
 		IIndividuRepository individuRepository = context.getBean(IIndividuRepository.class);
 		ILieuRepository lieuRepository = context.getBean(ILieuRepository.class);
@@ -187,7 +199,5 @@ public class MonRdvApplicationTest {
 		Optional<Utilisateur> optUtilisateur = utilisateurRepository.findByIdentifiant("patient01");
 
 		System.out.println("optUtilisateur=" + optUtilisateur.isPresent());
-
-		context.close();
 	}
 }

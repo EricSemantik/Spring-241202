@@ -4,7 +4,9 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Optional;
 
+import org.junit.AfterClass;
 import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -23,10 +25,21 @@ import spring.formation.repository.ISpecialiteRepository;
 import spring.formation.repository.IUtilisateurRepository;
 
 public class PraticienTest {
+
+	private static AnnotationConfigApplicationContext context = null;
+
+	@BeforeClass
+	public static void avantTousLesTests() {
+		context = new AnnotationConfigApplicationContext(JPAConfiguration.class);
+	}
+
+	@AfterClass
+	public static void apresTousLesTests() {
+		context.close();
+	}
+
 	@Test
 	public void update() {
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(JPAConfiguration.class);
-
 		IIndividuRepository individuRepository = context.getBean(IIndividuRepository.class);
 
 		// ARRANGE
@@ -73,14 +86,10 @@ public class PraticienTest {
 					praticienFind.getAdresse());
 
 		}
-
-		context.close();
 	}
 
 	@Test
 	public void testFindAllPraticienBySpecialite() {
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(JPAConfiguration.class);
-
 		IIndividuRepository individuRepository = context.getBean(IIndividuRepository.class);
 		ISpecialiteRepository specialiteRepository = context.getBean(ISpecialiteRepository.class);
 
@@ -115,14 +124,10 @@ public class PraticienTest {
 
 		// ASSERT
 		Assert.assertEquals(2, endSize - startSize);
-
-		context.close();
 	}
 
 	@Test
 	public void testFindByIdentifiant() {
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(JPAConfiguration.class);
-
 		IIndividuRepository individuRepository = context.getBean(IIndividuRepository.class);
 		IUtilisateurRepository utilisateurRepository = context.getBean(IUtilisateurRepository.class);
 
@@ -139,8 +144,6 @@ public class PraticienTest {
 
 		// ASSERT
 		assertTrue(optIndividu.isPresent());
-		
-		context.close();
 	}
 
 }
