@@ -1,14 +1,10 @@
 package spring.formation.repository;
 
-import java.util.List;
-import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import spring.formation.model.Individu;
-import spring.formation.model.Patient;
-import spring.formation.model.Praticien;
-import spring.formation.model.Secretaire;
 
-public interface IIndividuRepository extends IRepository<Individu, Long>{
+public interface IIndividuRepository extends JpaRepository<Individu, Long>{
 //	List<Patient> findAllPatient();
 //	
 //	List<Praticien> findAllPraticien();

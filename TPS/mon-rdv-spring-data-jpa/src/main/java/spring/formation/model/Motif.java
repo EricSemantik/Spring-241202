@@ -7,10 +7,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "motif")
+@NamedQuery(name = "Motif.findByTarifSup", query = "select m from Motif m where m.tarif > ?1")
 public class Motif {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,11 +1,10 @@
 package spring.formation.repository;
 
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import spring.formation.model.Consultation;
-import spring.formation.model.Statut;
 
-public interface IConsultationRepository extends IRepository<Consultation, Long> {
+public interface IConsultationRepository extends JpaRepository<Consultation, Long> {
 //	List<Consultation> findAllByPraticien(Long idPraticien);
 //	List<Consultation> findAllByPatient(Long idPatient);
 //	
