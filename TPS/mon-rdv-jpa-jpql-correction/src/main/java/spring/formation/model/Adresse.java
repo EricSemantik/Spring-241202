@@ -1,5 +1,7 @@
 package spring.formation.model;
 
+import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 
@@ -56,6 +58,19 @@ public class Adresse {
 
 	public void setVille(String ville) {
 		this.ville = ville;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Adresse other = (Adresse) obj;
+		return Objects.equals(codePostal, other.codePostal) && Objects.equals(complement, other.complement)
+				&& Objects.equals(rue, other.rue) && Objects.equals(ville, other.ville);
 	}
 
 }
