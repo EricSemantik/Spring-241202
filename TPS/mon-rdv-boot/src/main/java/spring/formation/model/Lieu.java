@@ -3,6 +3,8 @@ package spring.formation.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -23,6 +25,7 @@ public class Lieu {
 	@Column(length = 1000)
 	private String informations;
 	@ManyToMany(mappedBy = "lieux")
+	@JsonIgnore
 	private List<Praticien> praticiens = new ArrayList<Praticien>();
 
 	public Lieu() {
