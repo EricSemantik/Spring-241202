@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout.html">
+<head>
+<meta charset="UTF-8">
+<title>Edition d'un utilisateur</title>
+</head>
+<body>
+	<section layout:fragment="monContenu">
+		<div class="card mt-3">
+			<form th:action="@{/utilisateur/saveOld}" method="post">
+				<div class="card-header bg-primary text-white display-6">Edition
+					d'un utilisateur</div>
+				<div class="card-body">
+					<input type="hidden" name="id" th:value="${utilisateur.id}" />
+					<div class="card-body">
+						<div class="form-group">
+							<label for="identifiant">Login:</label> <input type="text"
+								class="form-control" id="identifiant" name="identifiant"
+								th:value="${utilisateur.identifiant}" /> 
+								<span
+								class="text-danger" th:errors="${utilisateur.identifiant}"></span>
+						</div>
+						<div class="form-group">
+							<label for="motDePasse">Mot de Passe:</label> <input type="text"
+								class="form-control" id="motDePasse" name="motDePasse"
+								th:value="${utilisateur.motDePasse}" /> <span
+								class="text-danger" th:errors="${utilisateur.motDePasse}"></span>
+						</div>
+						<div class="form-group form-check">
+							<input class="form-check-input" type="checkbox"
+								th:checked="${utilisateur.active}" id="active" value="true"
+								name="active"> <label class="form-check-label"
+								for="active">Actif ?</label>
+						</div>
+						<div class="form-group">
+							<label for="roles">Roles:</label> <select class="form-control"
+								id="roles" name="roles" multiple size="5">
+								<option value=""></option>
+								<option value="" th:each="r : ${roles}" th:value="${r}"
+									th:text="${r}" th:selected="${utilisateur.roles.contains(r)}"></option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="card-footer">
+					<div class="btn-group btn-group-lg float-right">
+						<button type="submit" class="btn btn-success">
+							<i class="bi bi-check-square-fill"></i>
+						</button>
+						<a class="btn btn-warning" th:href="@{/utilisateur/cancel}"><i
+							class="bi bi-backspace-fill"></i></a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>
+</body>
+</html>
