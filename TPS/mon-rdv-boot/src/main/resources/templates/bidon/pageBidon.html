@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>BIDON</h1>
+	
+	<th:block th:each="i: ${#numbers.sequence(0, 10)}">
+		<h2 th:text="${param1}"></h2>
+		<h3>[[${age}]]</h3>
+	</th:block>
+</body>
+</html>
