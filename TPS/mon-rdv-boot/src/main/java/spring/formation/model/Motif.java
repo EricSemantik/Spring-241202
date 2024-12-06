@@ -1,5 +1,7 @@
 package spring.formation.model;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,13 +18,18 @@ import jakarta.persistence.Table;
 public class Motif {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.ViewBase.class)
 	private Long id;
 	@Column(length = 100)
+	@JsonView(Views.ViewBase.class)
 	private String libelle;
+	@JsonView(Views.ViewBase.class)
 	private int duree;
+	@JsonView(Views.ViewBase.class)
 	private Double tarif;
 	@ManyToOne
 	@JoinColumn(name = "praticien_id")
+	@JsonView(Views.ViewMotif.class)
 	private Praticien praticien;
 
 	public Motif() {

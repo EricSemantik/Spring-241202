@@ -2,6 +2,8 @@ package spring.formation.model;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -21,26 +23,36 @@ import jakarta.persistence.Table;
 public class Consultation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.ViewBase.class)
 	private Long id;
 	@Column(name = "dt_consultation")
+	@JsonView(Views.ViewBase.class)
 	private LocalDateTime dtConsultation;
+	@JsonView(Views.ViewBase.class)
 	private int duree;
 	@Column(length = 255)
+	@JsonView(Views.ViewBase.class)
 	private String motif;
+	@JsonView(Views.ViewBase.class)
 	private double tarif;
 	@Enumerated(EnumType.STRING)
 	@Column(length = 15)
+	@JsonView(Views.ViewBase.class)
 	private Statut statut;
 	@Column(length = 1000)
+	@JsonView(Views.ViewBase.class)
 	private String notes;
 	@ManyToOne
 	@JoinColumn(name = "patient_id")
+	@JsonView(Views.ViewConsultation.class)
 	private Patient patient;
 	@ManyToOne
 	@JoinColumn(name = "praticien_id")
+	@JsonView(Views.ViewConsultation.class)
 	private Praticien praticien;
 	@ManyToOne
 	@JoinColumn(name = "lieu_id")
+	@JsonView(Views.ViewConsultation.class)
 	private Lieu lieu;
 
 	public Consultation() {
