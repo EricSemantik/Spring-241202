@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import jakarta.validation.Valid;
+import spring.formation.api.request.UtilisateurRequest;
+import spring.formation.model.Role;
 import spring.formation.model.Utilisateur;
 import spring.formation.repository.IUtilisateurRepository;
 
@@ -43,7 +47,33 @@ public class UtilisateurRestController {
 	}
 
 	@PostMapping("")
-	public ResponseEntity<Utilisateur> create(@RequestBody Utilisateur utilisateur) {
+	public ResponseEntity<Utilisateur> create(@RequestBody @Valid UtilisateurRequest utilisateurRequest, BindingResult result) {
+		if(utilisateurRequest.getPassword() != null && !utilisateurRequest.getPassword().equals(utilisateurRequest.getConfirmPassword()) ) {
+			result.rejectValue("confirmPassword", "utilisateur.confirPassword", "La confirmation du mot de passe est incorrecte");
+		}
+		
+		if(result.hasErrors()) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Utilisateur invalide !!!");
+		}
+		
+		Utilisateur utilisateur = new Utilisateur();
+		utilisateur.setIdentifiant(utilisateurRequest.getLogin());
+		utilisateur.setMotDePasse(utilisateurRequest.getPassword());
+		utilisateur.setActive(true);
+		
+		if(utilisateurRequest.isAdmin()) {
+			utilisateur.getRoles().add(Role.ADMIN);
+		}
+		if(utilisateurRequest.isPatient()) {
+			utilisateur.getRoles().add(Role.PATIENT);
+		}
+		if(utilisateurRequest.isPraticien()) {
+			utilisateur.getRoles().add(Role.PRATICIEN);
+		}
+		if(utilisateurRequest.isSecretaire()) {
+			utilisateur.getRoles().add(Role.SECRETAIRE);
+		}
+		
 		return new ResponseEntity<>(utilisateurRepository.save(utilisateur), HttpStatus.CREATED);
 	}
 

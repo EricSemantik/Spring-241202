@@ -3,6 +3,8 @@ package spring.formation.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
@@ -18,6 +20,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "utilisateur")
+@JsonView(Views.ViewBase.class)
 public class Utilisateur {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -30,4 +30,7 @@ public interface IIndividuRepository extends JpaRepository<Individu, Long>, Indi
 	
 	@Query("select p from Praticien p join p.specialites s where s.nom = :nom")
 	List<Praticien> findAllPraticienBySpecialite(@Param("nom") String nom);
+	
+	@Query("select distinct p from Praticien p left join fetch p.specialites s where p.id = ?1")
+	Optional<Praticien> findPraticienByIdWithSpecialites(Long id);
 }

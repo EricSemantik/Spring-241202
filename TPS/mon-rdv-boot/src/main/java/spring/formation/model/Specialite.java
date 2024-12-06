@@ -3,6 +3,8 @@ package spring.formation.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,6 +15,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "specialite")
+@JsonView(Views.ViewBase.class)
 public class Specialite {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +25,7 @@ public class Specialite {
 	@Column(length = 255)
 	private String description;
 	@ManyToMany(mappedBy = "specialites")
+	@JsonView(Views.ViewNone.class)
 	private List<Praticien> praticiens = new ArrayList<Praticien>();
 
 	public Specialite() {
