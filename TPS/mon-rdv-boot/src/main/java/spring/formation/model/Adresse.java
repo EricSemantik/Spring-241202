@@ -2,18 +2,24 @@ package spring.formation.model;
 
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 
 @Embeddable
 public class Adresse {
 	@Column(length = 255)
+	@JsonView(Views.ViewBase.class)
 	private String rue;
 	@Column(length = 255)
+	@JsonView(Views.ViewBase.class)
 	private String complement;
 	@Column(length = 10)
+	@JsonView(Views.ViewBase.class)
 	private String codePostal;
 	@Column(length = 100)
+	@JsonView(Views.ViewBase.class)
 	private String ville;
 
 	public Adresse() {

@@ -3,7 +3,7 @@ package spring.formation.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
@@ -19,13 +19,16 @@ import jakarta.persistence.Table;
 public class Lieu {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.ViewBase.class)
 	private Long id;
 	@Embedded
+	@JsonView(Views.ViewLieu.class)
 	private Adresse adresse;
 	@Column(length = 1000)
+	@JsonView(Views.ViewBase.class)
 	private String informations;
 	@ManyToMany(mappedBy = "lieux")
-	@JsonIgnore
+	@JsonView(Views.ViewLieuDetail.class)
 	private List<Praticien> praticiens = new ArrayList<Praticien>();
 
 	public Lieu() {
